@@ -25,6 +25,14 @@
     <mat-label>Время</mat-label>
     <input matInput [(ngModel)]="data.time" type="time" placeholder="ЧЧ:ММ">
   </mat-form-field>
+  <mat-form-field>
+    <mat-label>Жалобы</mat-label>
+    <input matInput [(ngModel)]="data.date" placeholder="Что беспокоит...">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>План лечения</mat-label>
+    <input matInput [(ngModel)]="data.time" >
+  </mat-form-field>
   <br>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
 

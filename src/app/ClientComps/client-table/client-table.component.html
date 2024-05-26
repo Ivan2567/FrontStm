@@ -47,6 +47,8 @@
           <input matInput [(ngModel)]="this.clientService.openClient.nummedbook">
         </mat-form-field>
       </div>
+      <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}">Все приёмы<mat-icon>menu</mat-icon></button>
+      <mat-divider [ngStyle]="{'margin-top': '5px', 'margin-bottom': '5px'}"></mat-divider>
       <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}" (click)="openAppointmentDialog()">Записать на приём<mat-icon>add</mat-icon></button>
       <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>
       <h2>Зубная карта</h2>
