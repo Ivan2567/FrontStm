@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Форма создания клиента</h2>
+<mat-dialog-content class="addform">
+  <mat-form-field>
+    <mat-label>Фамилия</mat-label>
+    <input matInput [(ngModel)]="data.surname">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Отчество</mat-label>
+    <input matInput [(ngModel)]="data.middlename">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input matInput [(ngModel)]="data.dob">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Номер паспорта</mat-label>
+    <input matInput [(ngModel)]="data.passport">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Адресс</mat-label>
+    <input matInput [(ngModel)]="data.adress">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="dialogactions">
+  <button mat-button (click)="onNoClick()">Назад</button>
+  <button mat-button [mat-dialog-close]="data">Добавить</button>
+</mat-dialog-actions>
+<style>
+.dialogactions{
+  justify-content: space-between;
+}
+.addform{
+  display: grid;
+
+}
+</style>

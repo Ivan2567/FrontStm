@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Форма создания врача</h2>
+<mat-dialog-content class="addform">
+  <mat-form-field>
+    <mat-label>Фамилия</mat-label>
+    <input matInput [(ngModel)]="data.surname">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Имя</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Отчество</mat-label>
+    <input matInput [(ngModel)]="data.middlename">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Дата рождения</mat-label>
+    <input matInput [(ngModel)]="data.dob">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Стаж</mat-label>
+    <input matInput [(ngModel)]="data.exp">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Должнотсь</mat-label>
+    <input matInput [(ngModel)]="data.post">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="dialogactions">
+  <button mat-button (click)="onNoClick()">Назад</button>
+  <button mat-button [mat-dialog-close]="data">Добавить</button>
+</mat-dialog-actions>
+<style>
+.dialogactions{
+  justify-content: space-between;
+}
+.addform{
+  display: grid;
+
+}
+</style>

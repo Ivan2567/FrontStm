@@ -1,0 +1,82 @@
+table {
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 25%;
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
+
+.mat-mdc-row:hover .mat-mdc-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 90%;
+}
+
+.sidenav .mat-toolbar {
+  /* background: inherit; */
+
+}
+
+.mat-toolbar.mat-primary {
+  background: whitesmoke;
+  color: rgb(0 0 0 / 60%);
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.filtertoolbar{
+  justify-content: space-between;
+   position: sticky;
+  top: 0;
+  z-index: 1;
+  background: white; 
+  /* background-color: #fafafa; */
+
+}
+.footerbar{
+  background-color: #fafafa;
+}
+.clienttoolbar{
+  justify-content: space-between;
+}
+.toothmap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+}
+.chelust {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.buttonsmall {
+  line-height: 1;
+  min-width: 0;
+  padding: 7px 7px 7px 7px; 
+}

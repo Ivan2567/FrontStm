@@ -1,0 +1,193 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <mat-dialog-content class="addform">
+<h2 mat-dialog-title>Форма создания записи</h2>
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Врач</mat-label>
+    <input matInput [(ngModel)]="data.doctorsurname"
+           aria-label="Doctor"
+           [matAutocomplete]="auto"
+           [formControl]="doctorCtrl">
+    <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let doctor of filteredDoctors | async" [value]="doctor.surname">
+          <span>{{doctor.surname}}</span>
+        </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <br>
+</form>
+
+  <mat-form-field>
+    <mat-label>Дата</mat-label>
+    <input matInput [(ngModel)]="data.date" type="date" placeholder="ДД-ММ-ГГГГ">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Время</mat-label>
+    <input matInput [(ngModel)]="data.time" type="time" placeholder="ЧЧ:ММ">
+  </mat-form-field>
+  <br>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()"
+                      [aria-label]="checkboxLabel()"
+                      color = "primary">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)"
+                      [aria-label]="checkboxLabel(row)"
+                      color = "primary"
+                      [disabled] = "true">
+        </mat-checkbox>
+      </td>
+      <td mat-footer-cell *matFooterCellDef> Итого </td>
+    </ng-container>
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef> Код </th>
+      <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Название </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Стоимость </th>
+      <td mat-cell *matCellDef="let element"> {{element.price * element.count}} </td>
+      <td mat-footer-cell *matFooterCellDef> {{getTotalCost()}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail"
+             [@detailExpand]="expandedElements.includes(element)? 'expanded' : 'collapsed'">
+
+          <!-- <span class="example-element-description-attribution"> {{element.count}} </span> -->
+          <div *ngIf="!(element.tooths)"> 
+            <mat-form-field>
+              <input
+                type="number"
+                matInput
+                [(ngModel)]="element.count"
+              />
+            </mat-form-field>
+          </div>
+          <div *ngIf="element.tooths" >
+            <mat-button-toggle-group name="chelust" aria-label="chelust" multiple>
+              <mat-button-toggle *ngFor="let tooth of this.dataService.toothmap1"  value="toothnumb" (click)="selecttooth(element,tooth)">{{tooth}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <mat-button-toggle-group name="chelust" aria-label="chelust" multiple>
+              <mat-button-toggle *ngFor="let tooth of this.dataService.toothmap2"  value="toothnumb"(click)="selecttooth(element,tooth)">{{tooth}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <mat-button-toggle-group name="chelust" aria-label="chelust" multiple>
+              <mat-button-toggle *ngFor="let tooth of this.dataService.toothmap4"  value="toothnumb"(click)="selecttooth(element,tooth)">{{tooth}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            <mat-button-toggle-group name="chelust" aria-label="chelust" multiple>
+              <mat-button-toggle *ngFor="let tooth of this.dataService.toothmap3"  value="toothnumb"(click)="selecttooth(element,tooth)">{{tooth}}</mat-button-toggle>
+            </mat-button-toggle-group>
+            
+            
+          </div>
+          <!-- <span>{{element.toothlist.length}}</span> -->
+        </div>
+      </td>
+    </ng-container>
+  
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+        class="example-element-row"
+        [class.example-expanded-row]="expandedElement === element"
+        (click)="selection.toggle(element);
+        expandedElement = expandedElement === element ? null : element;
+        exprows(element)
+         ">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+    <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+
+  </table>
+  </mat-dialog-content>
+  <mat-dialog-actions class="dialogactions">
+    <button mat-button (click)="onNoClick()">Назад</button>
+    <button mat-button [mat-dialog-close]="data" (click)="openSnackBar()">Добавить</button>
+  </mat-dialog-actions>
+
+<style>
+    table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+tr.example-element-row:not(.example-expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.example-element-row:not(.example-expanded-row):active {
+  background: #efefef;
+}
+
+.example-element-row td {
+  border-bottom-width: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+.dialogactions{
+  justify-content: space-between;
+}
+.addform{
+  display: grid;
+
+}
+.example-form {
+  min-width: 150px;
+  /* max-width: 500px; */
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+.toothmap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+}
+.chelust {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.buttonsmall {
+  line-height: 1;
+  min-width: 0;
+  padding: 7px 7px 7px 7px; 
+}
+
+ </style>
