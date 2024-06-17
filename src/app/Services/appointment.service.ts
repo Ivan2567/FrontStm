@@ -1,23 +1,62 @@
-import { Injectable } from "@angular/core";
-import { DomSanitizer } from '@angular/platform-browser';
-import { ServiceModel } from "../Models/ServiceModel";
-import { Appointment } from "../Models/Appointment";
+import {Injectable} from "@angular/core";
+import {DomSanitizer} from '@angular/platform-browser';
+import {ServiceModel} from "../Models/ServiceModel";
+import {Appointment} from "../Models/Appointment";
 
-@Injectable({providedIn: 'root' })
-export class AppointmentService
-{
+@Injectable({providedIn: 'root'})
+export class AppointmentService {
 
 
-    servicelist: ServiceModel[] = []
+  servicelist: ServiceModel[] = []
 
-    appointmentlist: Appointment[] = [
-    {id: 1, clientname: "test", clientsurname: "test", clientmiddlename: "test", doctorsurname: "test", date: "0001-01-01", time: "00:00", servicelist: this.servicelist, cost: 0 }
-    ]
-    
+  appointmentlist: Appointment[] = [
+    {
+      id: 1,
+      clientname: "Иванов",
+      clientsurname: "Иван",
+      clientmiddlename: "Васильевич",
+      doctorsurname: "Заболотская",
+      date: "2024-05-14",
+      time: "10:40",
+      servicelist: this.servicelist,
+      cost: 0
+    }
+  ]
 
-    openAppointment: Appointment = {id: 0, clientname: "", clientsurname: "", clientmiddlename: "", doctorsurname: "", date: "", time: "", servicelist: [], cost: 0 }
-    newAppointment: Appointment = {id: 0, clientname: "", clientsurname: "", clientmiddlename: "", doctorsurname: "", date: "", time: "", servicelist: [], cost: 0  }
-    emptyAppointment: Appointment = {id: 0, clientname: "", clientsurname: "", clientmiddlename: "", doctorsurname: "", date: "", time: "", servicelist: [], cost: 0  }
+  openAppointment: Appointment = {
+    id: 0,
+    clientname: "",
+    clientsurname: "",
+    clientmiddlename: "",
+    doctorsurname: "",
+    date: "",
+    time: "",
+    servicelist: [],
+    cost: 0
+  }
+  newAppointment: Appointment = {
+    id: 0,
+    clientname: "",
+    clientsurname: "",
+    clientmiddlename: "",
+    doctorsurname: "",
+    date: "",
+    time: "",
+    servicelist: [],
+    cost: 0
+  }
+  emptyAppointment: Appointment = {
+    id: 0,
+    clientname: "",
+    clientsurname: "",
+    clientmiddlename: "",
+    doctorsurname: "",
+    date: "",
+    time: "",
+    servicelist: [],
+    cost: 0
+  }
 
-    constructor(private sanitizer: DomSanitizer) { }
+  constructor(private sanitizer: DomSanitizer) {
+  }
 }
