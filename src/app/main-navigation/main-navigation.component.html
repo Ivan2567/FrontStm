@@ -33,6 +33,11 @@
         (click)="selectDoc()">
         <span>Работники</span>
         </div>
+        <div class="btn"
+        [ngClass]="{btnactive: this.router.url === '/clientprofile' || this.router.url === '/doctorprofile'}"
+        (click)="selectProfile()">
+        <span>Личный кабинет</span>
+        </div>
       </div>
     </mat-toolbar>
     <!-- Add Content Here -->

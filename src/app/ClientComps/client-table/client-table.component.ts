@@ -35,6 +35,7 @@ import {AppointmentService} from 'src/app/Services/appointment.service';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {Appointment} from 'src/app/Models/Appointment';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @Component({
   selector: 'app-client-table',
@@ -124,6 +125,18 @@ export class ClientTableComponent implements AfterViewInit, OnInit {
 
     });
   }
+  openHistoryDialog(): void {
+    const dialogRef = this.dialog.open(TothHistoryDialog, {
+      data: this.clientService.newClient,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if (result != undefined) {
+      }
+
+    });
+  }
 
   openAppointmentDialog(): void {
     const dialogRef = this.dialog.open(AddAppointmentDialog, {
@@ -165,6 +178,33 @@ export class ClientTableComponent implements AfterViewInit, OnInit {
 export class AddClientDialog {
   constructor(
     public dialogRef1: MatDialogRef<AddClientDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: Client,
+    public servicemodelService: ServicemodelService,
+  ) {
+  }
+
+  onNoClick(): void {
+    this.dialogRef1.close();
+  }
+}
+@Component({
+  selector: 'tooth-history-dialog',
+  templateUrl: 'tooth-history-dialog.html',
+  standalone: true,
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatCheckboxModule,
+    MatExpansionModule,
+    MatTableModule
+  ],
+})
+export class TothHistoryDialog {
+  constructor(
+    public dialogRef1: MatDialogRef<TothHistoryDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Client,
     public servicemodelService: ServicemodelService,
   ) {

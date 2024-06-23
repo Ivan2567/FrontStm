@@ -60,7 +60,7 @@
       <div class="chelust">
         <div class="toothmap">
           <div *ngFor="let tooth of this.dataService.toothmap1">
-            <button mat-stroked-button class="buttonsmall">{{tooth}}</button>
+            <button mat-stroked-button class="buttonsmall" (click)="openHistoryDialog()">{{tooth}}</button>
           </div>
         </div>
         <div class="toothmap">

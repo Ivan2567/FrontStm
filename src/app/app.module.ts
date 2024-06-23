@@ -16,6 +16,7 @@ import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatCardModule } from '@angular/material/card';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {Component} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -43,6 +44,10 @@ import { AppointmentService } from 'src/app/Services/appointment.service';
 import { AppoinmentTableComponent } from './AppointmentComps/appoinment-table/appoinment-table.component';
 import { DoctorTableComponent } from './PersonalComps/doctor-table/doctor-table.component';
 import { DoctorService } from './Services/doctor.service';
+import { LoginFormComponent } from './LogReg/login-form/login-form.component';
+import { RegistrationFormComponent } from './LogReg/registration-form/registration-form.component';
+import { ClientProfileComponent } from './ClientComps/client-profile/client-profile.component';
+import { DoctorProfileComponent } from './PersonalComps/doctor-profile/doctor-profile.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,11 @@ import { DoctorService } from './Services/doctor.service';
     MainNavigationComponent,
     ClientTableComponent,
     AppoinmentTableComponent,
-    DoctorTableComponent
+    DoctorTableComponent,
+    LoginFormComponent,
+    RegistrationFormComponent,
+    ClientProfileComponent,
+    DoctorProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +81,7 @@ import { DoctorService } from './Services/doctor.service';
     MatCheckboxModule,
     MatFormFieldModule,
     CurrencyPipe,
+    MatCardModule,
     // MatPaginator,
     // MatSort,
     // MatTableDataSource,

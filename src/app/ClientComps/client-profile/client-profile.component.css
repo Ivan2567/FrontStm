@@ -1,0 +1,41 @@
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.toothmap {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
+
+}
+.chelust {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.buttonsmall {
+  line-height: 1;
+  min-width: 0;
+  padding: 7px 7px 7px 7px; 
+}
+.clientform{
+  display: flex;
+    flex-direction: column;
+}
+.lc{
+  overflow: auto;
+}
+.imgcontainer{
+  width: 100%;
+  background: whitesmoke;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
