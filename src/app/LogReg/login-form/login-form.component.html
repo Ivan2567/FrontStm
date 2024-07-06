@@ -12,13 +12,15 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Пароль">
+          <input type="password" matInput placeholder="Пароль">
         </mat-form-field>
       </mat-card-content>
-      <button mat-stroked-button color="primary" class="btn-block">Войти</button>
-      
+      <button mat-stroked-button color="primary" class="btn-block"
+              [ngClass]="{btnactive: this.router.url === '/clients'}"
+              (click)="onSubmit()">Войти</button>
+
     </form>
-    <a routerLink="../register" class="btn btn-link">Нет аккаунта?</a>
+<!--    <a routerLink="../register" class="btn btn-link">Нет аккаунта?</a>-->
   </mat-card>
 
 </div>

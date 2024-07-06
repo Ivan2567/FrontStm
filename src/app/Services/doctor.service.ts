@@ -15,11 +15,27 @@ export class DoctorService {
       exp: '31',
       post: 'Врач'
     },
-    {id: 3, surname: 'Лоскутова', name: 'Алевтина', middlename: 'Николаевна', dob: '21.04.1994', exp: '16', post: 'Врач'},
+    {
+      id: 3,
+      surname: 'Лоскутова',
+      name: 'Алевтина',
+      middlename: 'Николаевна',
+      dob: '21.04.1994',
+      exp: '16',
+      post: 'Врач'
+    },
     {id: 4, surname: 'Иванова', name: 'Иоанна', middlename: 'Ивановна', dob: '11.03.1999', exp: '1', post: 'Стажер'},
   ];
 
-  openDoctor: Doctor = {id: 0, surname: '', name: '', middlename: '', dob: '', exp: '', post: ''}
+  openDoctor: Doctor = {
+    id: 2,
+    surname: 'Заболотская',
+    name: 'Светлана',
+    middlename: 'Егоровна',
+    dob: '25.01.1969',
+    exp: '31',
+    post: 'Врач'
+  }
   newDoctor: Doctor = {id: 0, surname: '', name: '', middlename: '', dob: '', exp: '', post: ''}
   emptyDoctor: Doctor = {id: 0, surname: '', name: '', middlename: '', dob: '', exp: '', post: ''}
 

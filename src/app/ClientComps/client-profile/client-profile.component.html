@@ -9,7 +9,9 @@
       <mat-icon aria-label="Side nav toggle icon">keyboard_arrow_right</mat-icon>
     </button>
   </mat-toolbar> -->
-  <div class="imgcontainer"><img style="width: 20vw; min-width: 330px; border-radius:50%;" src="https://shtukaturi.ru/wp-content/uploads/2022/10/oi54yb4s8gmwzcx7af4qdah8iwuifczh.jpg" alt="Photo of a Shiba Inu" ></div>
+  <div class="imgcontainer"><img style="width: 15vw; min-width: 330px; border-radius:50%;"
+                                 src="https://shtukaturi.ru/wp-content/uploads/2022/10/oi54yb4s8gmwzcx7af4qdah8iwuifczh.jpg"
+                                 alt="Photo of a Shiba Inu"></div>
   <div class="clientform">
     <mat-form-field>
       <mat-label>Фамилия</mat-label>
@@ -35,50 +37,16 @@
       <mat-label>Адрес</mat-label>
       <input matInput [(ngModel)]="this.clientService.openClient.adress">
     </mat-form-field>
-<!--      <mat-form-field>-->
-<!--        <mat-label>Номер мед. книги</mat-label>-->
-<!--        <input matInput [(ngModel)]="this.clientService.openClient.nummedbook">-->
-<!--      </mat-form-field>-->
+    <!--      <mat-form-field>-->
+    <!--        <mat-label>Номер мед. книги</mat-label>-->
+    <!--        <input matInput [(ngModel)]="this.clientService.openClient.nummedbook">-->
+    <!--      </mat-form-field>-->
   </div>
-  <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}">Мои приёмы
-    <mat-icon>menu</mat-icon>
-  </button>
-  <mat-divider [ngStyle]="{'margin-top': '5px', 'margin-bottom': '5px'}"></mat-divider>
-  <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}" (click)="openAppointmentDialog()">Записаться
-    на приём
-    <mat-icon>add</mat-icon>
-  </button>
-  <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>
-  <h2>Зубная карта</h2>
-  <div>
-    <div class="chelust">
-      <div class="toothmap">
-        <div *ngFor="let tooth of this.dataService.toothmap1">
-          <button mat-stroked-button class="buttonsmall">{{tooth}}</button>
-        </div>
-      </div>
-      <div class="toothmap">
-        <div *ngFor="let tooth of this.dataService.toothmap2">
-          <button mat-stroked-button class="buttonsmall">{{tooth}}</button>
-        </div>
-      </div>
-    </div>
-    <mat-divider></mat-divider>
-    <div class="chelust">
-      <div class="toothmap">
-        <div *ngFor="let tooth of this.dataService.toothmap4">
-          <button mat-stroked-button class="buttonsmall">{{tooth}}</button>
-        </div>
-      </div>
-      <div class="toothmap">
-        <div *ngFor="let tooth of this.dataService.toothmap3">
-          <button mat-stroked-button class="buttonsmall">{{tooth}}</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>
-  <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}">Выйти
+
+  <!--  <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>-->
+  <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}"
+          [ngClass]="{btnactive: this.router.url === '/login'}"
+          (click)="unLogin()">Выйти
     <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
   <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>

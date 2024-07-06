@@ -18,7 +18,7 @@
       </button> -->
       <span>Зубная</span>
       <div class="btncontainer">
-        <div class="btn" 
+        <div class="btn"
         [ngClass]="{btnactive: this.router.url === '/clients'}"
         (click)="selectCli()">
         <span>Клиенты</span>
@@ -29,12 +29,13 @@
         <span>Приёмы</span>
         </div>
         <div class="btn"
+             *ngIf = this.dataService.isAdmin
         [ngClass]="{btnactive: this.router.url === '/doctors'}"
         (click)="selectDoc()">
-        <span>Работники</span>
+        <span>Персонал</span>
         </div>
         <div class="btn"
-        [ngClass]="{btnactive: this.router.url === '/clientprofile' || this.router.url === '/doctorprofile'}"
+        [ngClass]="{btnactive: this.router.url === '/doctorprofile'}"
         (click)="selectProfile()">
         <span>Личный кабинет</span>
         </div>

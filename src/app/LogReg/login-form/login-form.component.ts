@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import { OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { AsyncPipe, NgIf } from '@angular/common';
+import {Component, inject} from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs/operators';
+import {OnInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {first} from 'rxjs/operators';
+import {AsyncPipe, NgIf} from '@angular/common';
+import {DataService} from "../../Services/data.service";
 
 @Component({
   selector: 'app-login-form',
@@ -21,33 +22,32 @@ export class LoginFormComponent {
       map(result => result.matches),
       shareReplay()
     );
-    form!: FormGroup;
-    loading = false;
-    submitted = false;
+  form!: FormGroup;
+  loading = false;
+  submitted = false;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-    ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    public router: Router,
+    public dataService: DataService
+  ) {
+  }
 
-    ngOnInit() {
-        this.form = this.formBuilder.group({
-            username: ['', Validators.required],
-            password: ['', Validators.required]
-        });
-    }
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.form.controls;
+  }
 
-    onSubmit() {
-        this.submitted = true;
-        // stop here if form is invalid
-        if (this.form.invalid) {
-            return;
-        }
-        this.router.navigateByUrl('http://localhost:4200/clients');
-        this.loading = true;
-    }
+  onSubmit() {
+    this.dataService.isAdmin = true
+    this.router.navigate([ '/clients' ])
+  }
 }

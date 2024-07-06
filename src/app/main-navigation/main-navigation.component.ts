@@ -25,7 +25,7 @@ export class MainNavigationComponent {
     this.router.navigate([ '/appointments' ])
 	}
   selectProfile() {
-    this.router.navigate([ '/clientprofile' ])
+    this.router.navigate([ '/doctorprofile' ])
 	}
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
