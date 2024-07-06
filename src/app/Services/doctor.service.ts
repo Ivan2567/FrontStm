@@ -27,7 +27,8 @@ export class DoctorService {
     {id: 4, surname: 'Иванова', name: 'Иоанна', middlename: 'Ивановна', dob: '11.03.1999', exp: '1', post: 'Стажер'},
   ];
 
-  openDoctor: Doctor = {
+
+  currentDoctor: Doctor = {
     id: 2,
     surname: 'Заболотская',
     name: 'Светлана',
@@ -36,6 +37,7 @@ export class DoctorService {
     exp: '31',
     post: 'Врач'
   }
+  openDoctor: Doctor = {id: 0, surname: '', name: '', middlename: '', dob: '', exp: '', post: ''}
   newDoctor: Doctor = {id: 0, surname: '', name: '', middlename: '', dob: '', exp: '', post: ''}
   emptyDoctor: Doctor = {id: 0, surname: '', name: '', middlename: '', dob: '', exp: '', post: ''}
 

@@ -7,6 +7,7 @@ import {Router} from "@angular/router";
 import {DataService} from "../../Services/data.service";
 import {ClientService} from "../../Services/client.service";
 import {ServicemodelService} from "../../Services/servicemodel.service";
+import {DoctorService} from "../../Services/doctor.service";
 
 @Component({
   selector: 'app-doctor-profile',
@@ -18,7 +19,7 @@ export class DoctorProfileComponent {
 
   constructor(public router: Router,
               public dataService: DataService,
-              public clientService: ClientService,
+              public doctorService: DoctorService,
               public servicemodelService: ServicemodelService,) {
   }
 
@@ -27,4 +28,14 @@ export class DoctorProfileComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+  unLogin() {
+    this.router.navigate(['/login'])
+  }
+
+  close() {
+  }
+
+  openAppointmentDialog(): void {
+  }
 }

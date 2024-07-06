@@ -1,27 +1,53 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>FrontStm</span>
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div class="lc">
+  <!-- <mat-toolbar class="filtertoolbar">
+    <div>Клиент</div>
+    <button
+      type="button"
+      aria-label="Toggle sidenav"
+      mat-icon-button align="end"
+      (click)="close()">
+      <mat-icon aria-label="Side nav toggle icon">keyboard_arrow_right</mat-icon>
+    </button>
+  </mat-toolbar> -->
+  <div class="imgcontainer"><img style="width: 15vw; min-width: 330px; border-radius:50%;"
+                                 src="https://shtukaturi.ru/wp-content/uploads/2022/10/oi54yb4s8gmwzcx7af4qdah8iwuifczh.jpg"
+                                 alt="Photo of a Shiba Inu"></div>
+  <div class="clientform">
+    <mat-form-field>
+      <mat-label>Фамилия</mat-label>
+      <input matInput [(ngModel)]="this.doctorService.currentDoctor.surname">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Имя</mat-label>
+      <input matInput [(ngModel)]="this.doctorService.currentDoctor.name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Отчество</mat-label>
+      <input matInput [(ngModel)]="this.doctorService.currentDoctor.middlename">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Дата рождения</mat-label>
+      <input matInput [(ngModel)]="this.doctorService.currentDoctor.dob">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Стаж работы</mat-label>
+      <input matInput [(ngModel)]="this.doctorService.currentDoctor.exp">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Должность</mat-label>
+      <input matInput [(ngModel)]="this.doctorService.currentDoctor.post">
+    </mat-form-field>
+    <!--      <mat-form-field>-->
+    <!--        <mat-label>Номер мед. книги</mat-label>-->
+    <!--        <input matInput [(ngModel)]="this.clientService.openClient.nummedbook">-->
+    <!--      </mat-form-field>-->
+  </div>
+
+  <!--  <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>-->
+  <button mat-raised-button color="primary" [ngStyle]="{'width': '100%'}"
+          [ngClass]="{btnactive: this.router.url === '/login'}"
+          (click)="unLogin()">Выйти
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+  <mat-divider [ngStyle]="{'margin-top': '10px', 'margin-bottom': '10px'}"></mat-divider>
+</div>
